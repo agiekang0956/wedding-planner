@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>우리의 결혼 준비 | MarryPlan</title>
+<style>
+:root{--bg:#f8f6f3;--surface:#fff;--ink:#292b32;--muted:#85848c;--line:#ebe7e3;--rose:#b76d77;--rose2:#f8e9eb;--green:#418776;--green2:#e8f5ef;--shadow:0 9px 27px rgba(45,32,31,.035)}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--rose);outline-offset:2px}.layout{display:flex;min-height:100vh}.sidebar{background:#fff;width:244px;flex:none;border-right:1px solid var(--line);padding:30px 18px;display:flex;flex-direction:column;gap:23px;position:sticky;top:0;height:100vh}.brand{font-size:23px;font-family:Georgia,serif;font-weight:700;letter-spacing:-.6px;color:#a65f68;padding:5px 15px}.brand small{font:10px sans-serif;letter-spacing:2px;color:#bc9299;display:block;margin:4px 0 0}.menu{display:grid;gap:6px}.nav{border:0;width:100%;background:transparent;display:flex;gap:13px;align-items:center;text-align:left;padding:13px 15px;color:#6f6b71;border-radius:12px;font-weight:600}.nav:hover,.nav.active{background:#f9eded;color:#a95866}.nav .ic{font-size:18px;width:22px;text-align:center}.side-bottom{margin-top:auto;border-radius:14px;background:#fbf3f1;padding:15px;color:#79666c;line-height:1.65;font-size:12px}.main{flex:1;min-width:0;padding:30px clamp(20px,3.4vw,55px) 70px;max-width:1600px;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:28px}.eyebrow{color:#bd8e95;font-size:12px;letter-spacing:2px;font-weight:700}.top h1{font-size:29px;margin:6px 0 0;letter-spacing:-1px}.top-actions{display:flex;gap:9px;align-items:center}.btn{border:1px solid var(--line);background:white;color:#5c5860;padding:10px 14px;border-radius:10px;font-weight:700;white-space:nowrap}.btn:hover{border-color:#d9abb3}.btn.primary{background:var(--rose);color:white;border-color:var(--rose)}.btn.mini{padding:6px 10px;font-size:12px}.date-pill{color:#a56a76;background:#fff;border:1px solid #f0e5e5;border-radius:30px;padding:10px 15px;font-size:12px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.card{background:white;border:1px solid #eee9e6;border-radius:17px;box-shadow:var(--shadow);padding:23px}.stat .tag{font-size:12px;color:#88818a;margin-bottom:16px}.stat strong{font-size:25px;letter-spacing:-1px}.stat .sub{font-size:12px;color:var(--muted);margin-top:12px}.highlight{background:#b8737e;color:white;border-color:#b8737e}.highlight .tag,.highlight .sub{color:#ffe1e5}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:30px 0 15px}.section-head h2{font-size:18px;margin:0}.muted{color:var(--muted);font-size:12px}.cols{display:grid;grid-template-columns:1.35fr 1fr;gap:17px}.progressbar{background:#f1ece9;height:8px;border-radius:10px;overflow:hidden}.progressbar i{display:block;background:#b56d77;height:100%;border-radius:10px}.task{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #f1eeec}.task:last-child{border:0}.task input[type=checkbox],.nested-item input[type=checkbox]{accent-color:var(--rose);width:17px;height:17px;flex:none;cursor:pointer}.taskmain{flex:1;min-width:0}.taskmain b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.taskmain small{color:#929098;display:block;margin-top:5px}.task.done b{text-decoration:line-through;color:#aaa}.chip{font-size:11px;padding:5px 8px;border-radius:30px;background:#f6f0ee;color:#a67177;white-space:nowrap}.chip.green{background:#e9f6f0;color:#3f856f}.chip.warn{background:#fff1e1;color:#ae773a}.empty{padding:45px 10px;text-align:center;color:#999}.view{display:none}.view.active{display:block}.category{border:1px solid #eee8e5;background:#fff;border-radius:17px;overflow:hidden;margin-bottom:12px}.category-head{display:flex;align-items:center;padding:18px 21px;gap:14px;cursor:pointer}.category-icon{width:42px;height:42px;border-radius:12px;background:#fbf0ef;display:grid;place-items:center;font-size:21px}.category-name{flex:1}.category-name strong{font-size:16px}.category-name small{display:block;margin-top:5px;color:#a19aa0}.category-body{border-top:1px solid var(--line);padding:7px 20px 18px}.subgroup{margin:16px 0;border-left:2px solid #f1dadd;padding-left:16px}.subgroup-head{display:flex;align-items:center;gap:10px;margin-bottom:9px}.subgroup-head b{flex:1;font-size:14px}.nested-item{display:flex;align-items:center;gap:10px;padding:9px 5px;border-bottom:1px solid #f7f4f2}.nested-item:last-child{border:0}.nested-item .taskmain small{margin-top:3px}.nested-item.checked .taskmain b{text-decoration:line-through;color:#aaa}.subtle{border:0;background:none;color:#a9737d;font-weight:700}.iconbutton{border:0;background:transparent;color:#aaa;padding:5px 7px;border-radius:6px}.iconbutton:hover{background:#f9eded;color:#b76d77}.calendar-controls{display:flex;gap:10px;align-items:center}.calendar-label{font-weight:800;font-size:19px;min-width:120px;text-align:center}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-left:1px solid #eee8e5;border-top:1px solid #eee8e5;background:#fff;border-radius:12px;overflow:hidden}.weekday{padding:14px 6px;text-align:center;font-size:12px;font-weight:800;color:#8b858b;border-bottom:1px solid #eee8e5;border-right:1px solid #eee8e5;background:#fdfbf9}.day{border-right:1px solid #eee8e5;border-bottom:1px solid #eee8e5;min-height:109px;padding:9px;cursor:pointer}.day:hover{background:#fef8f7}.day.out{background:#faf9f7;color:#c6c1c0}.day.today .num{background:var(--rose);color:white}.day.selected{background:#fff4f4}.num{display:inline-grid;place-items:center;width:25px;height:25px;border-radius:50%;font-size:12px}.event{font-size:11px;background:#f7e7eb;color:#9e5965;border-radius:5px;margin-top:5px;padding:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.event.done{background:#e7f4ee;color:#468b77}.timeline-item{display:flex;gap:18px;position:relative;padding-bottom:23px}.timeline-item:before{content:'';position:absolute;left:9px;top:17px;bottom:-4px;border-left:1px solid #ead6d9}.timeline-item:last-child:before{display:none}.dot{width:19px;height:19px;border-radius:50%;border:5px solid #d49aa2;background:#fff;z-index:1;flex:none}.timeline-item.done .dot{border-color:#72aa94}.timeline-content{flex:1;border:1px solid var(--line);background:#fff;border-radius:13px;padding:15px}.timeline-content small{color:#ae7780}.timeline-content h3{margin:8px 0;font-size:15px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.filter{padding:9px 14px;border-radius:22px;border:1px solid #e9e2df;background:#fff;color:#8c8489}.filter.active{color:#aa616e;background:#fae9eb;border-color:#fae9eb}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff}table{width:100%;border-collapse:collapse;text-align:left;min-width:650px}th{padding:16px;color:#8b828a;font-size:12px;background:#fdfaf9;border-bottom:1px solid var(--line)}td{padding:15px;border-bottom:1px solid #f1eeec}tr:last-child td{border-bottom:0}.badge-best{background:#e6f4ed;color:#3f8a70;font-size:11px;border-radius:6px;padding:5px 7px}.input,select,textarea{border:1px solid #e5e0dd;border-radius:9px;padding:11px 12px;width:100%;background:#fff;color:#333}.field{display:grid;gap:7px;margin-bottom:14px}.field label{font-size:12px;color:#777;font-weight:700}.dialog{border:0;border-radius:19px;padding:0;box-shadow:0 30px 85px #24212442;width:min(510px,calc(100% - 28px));max-height:90vh;overflow:auto}.dialog::backdrop{background:#24202a83}.dialog-inner{padding:27px}.dialog h2{margin:0 0 22px;font-size:21px}.dialog-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:22px}.two-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.budget-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px}.budget-bar{height:16px;background:#f5eded;border-radius:30px;overflow:hidden}.budget-bar i{display:block;height:100%;background:#b56d77}.compare-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.compare-card{border:1px solid var(--line);border-radius:14px;background:white;padding:18px}.compare-card h3{margin:0 0 8px}.money{font-variant-numeric:tabular-nums;font-weight:800}.section-tools{display:flex;align-items:center;flex-wrap:wrap;gap:9px}.only-mobile{display:none}@media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}.compare-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:760px){.layout{display:block}.sidebar{height:auto;width:100%;position:static;padding:13px 15px;gap:10px}.brand{font-size:18px;padding:3px}.brand small,.side-bottom{display:none}.menu{display:flex;overflow-x:auto;gap:5px}.nav{flex:none;width:auto;padding:9px 12px;font-size:12px}.nav .ic{font-size:15px;width:auto}.main{padding:23px 15px 60px}.top{align-items:flex-start}.top h1{font-size:23px}.top-actions{flex-direction:column;align-items:flex-end}.date-pill{display:none}.cols,.budget-wrap,.compare-grid{grid-template-columns:1fr}.card{padding:18px}.grid{gap:10px}.stat strong{font-size:21px}.day{min-height:70px;padding:4px}.event{font-size:9px;padding:3px}.num{width:21px;height:21px}.weekday{padding:10px 2px}.two-fields{grid-template-columns:1fr}}
+
+.choice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px}.choice-input{position:absolute;opacity:0;pointer-events:none}.choice-label{display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid #e5e0dd;border-radius:10px;padding:11px 10px;background:#fff;color:#6e6870;font-weight:600;cursor:pointer;transition:.15s ease}.choice-dot,.task-color-dot,.mark-dot{width:12px;height:12px;border-radius:50%;display:inline-block;flex:none}.task-title{display:flex;align-items:center;gap:8px}.choice-input:checked + .choice-label{background:var(--choice-bg);border-color:var(--choice-dot);color:var(--choice-fg);box-shadow:0 0 0 2px color-mix(in srgb,var(--choice-dot) 18%, white)}.choice-label .choice-dot{background:var(--choice-dot)}.event{border-left:4px solid transparent}.event.done{opacity:.72}.timeline-item.done .timeline-content{opacity:.8}.timeline-item.done .dot{opacity:.75}.timeline-content h3,.taskmain b{display:flex;align-items:center;gap:8px}.mark-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}.expense-title{display:flex;align-items:center;gap:8px}.expense-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.expense-table td .muted{display:block;margin-top:4px}.day .muted{font-size:11px;margin-top:4px}.dialog .field .help{font-size:11px;color:#999}.calendar .event{box-shadow:none}.nested-item .taskmain b,.task .taskmain b{white-space:normal}.dot{transition:.15s ease}
+
+.calendar-filter{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:0 0 15px}.calendar-filter .filter{padding:8px 12px}.payer-totals{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-bottom:22px}.payer-totals strong{font-size:22px}@media(max-width:760px){.calendar-filter{align-items:flex-start}.calendar-filter .filters{gap:6px}.calendar-filter .filter{padding:7px 9px}}
+
+/* Mobile / iOS Safari improvements */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{overflow-x:hidden}button,input,select,textarea{-webkit-appearance:none;appearance:none}input[type=checkbox],input[type=radio],input[type=date]{-webkit-appearance:auto;appearance:auto}input,select,textarea{font-size:16px}button{touch-action:manipulation}button,.nav,.day,.choice-label{ -webkit-tap-highlight-color:transparent } .main{width:100%}.taskmain,.category-name,.section-head>div{min-width:0}.calendar-controls{flex-wrap:wrap}.category-head{min-width:0}.category-head .category-name{overflow:hidden}.date-pill{white-space:nowrap}
+@media(max-width:760px){
+ body{font-size:14px}.layout{min-width:0}.sidebar{border-right:0;border-bottom:1px solid var(--line);padding:12px 12px 9px}.brand{padding:0 4px}.menu{margin:0 -12px;padding:0 12px 5px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.menu::-webkit-scrollbar{display:none}.nav{padding:10px 12px;min-height:42px}.main{padding:18px 12px calc(48px + env(safe-area-inset-bottom,0px));max-width:100vw}.top{margin-bottom:17px;gap:8px}.top h1{font-size:21px}.top-actions .btn{padding:9px 10px;font-size:12px;white-space:normal}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.payer-totals{grid-template-columns:1fr 1fr}.card{padding:15px;min-width:0}.stat strong{font-size:clamp(16px,4.4vw,22px);overflow-wrap:anywhere}.section-head{flex-wrap:wrap;gap:9px}.section-head h2{font-size:16px}.section-head>.btn{margin-left:auto}.filters{gap:5px}.filter{font-size:12px}.calendar-controls{gap:6px}.calendar-label{font-size:16px;min-width:96px}.weekday{padding:9px 0;font-size:11px}.day{min-height:76px;padding:4px 2px;overflow:hidden}.day .num{width:22px;height:22px}.day .event{font-size:0;width:calc(100% - 4px);height:7px;min-height:7px;padding:0;margin:4px 2px 0;border-left-width:0!important;border-radius:5px;overflow:hidden}.day .muted{font-size:9px}.calendar-filter{gap:5px}.calendar-filter .filters{width:100%;gap:5px}.calendar-filter .filter{padding:7px 8px;font-size:11px}.dialog{width:calc(100vw - 16px);max-height:calc(100dvh - 24px);border-radius:16px}.dialog-inner{padding:20px 16px 16px}.dialog-actions{position:sticky;bottom:0;background:#fff;padding-top:10px}.choice-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.choice-label{padding:10px 4px;font-size:12px}.category-head{padding:13px 10px;gap:7px}.category-icon{width:34px;height:34px;font-size:18px}.category-head .chip{font-size:10px}.category-body{padding:8px 10px 14px}.subgroup{padding-left:9px;margin:12px 0}.subgroup-head{flex-wrap:wrap;gap:7px}.nested-item{gap:7px}.task{gap:7px}.taskmain b{font-size:13px}.taskmain small{font-size:11px;overflow-wrap:anywhere}.task .chip{font-size:10px}.timeline-item{gap:11px}.timeline-content{padding:12px}.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}.table-wrap table{min-width:620px}.expense-table{min-width:740px!important}.task-color-dot{width:10px;height:10px}.date-pill{display:none}
+}
+@media(max-width:360px){.grid,.grid.payer-totals{grid-template-columns:1fr 1fr}.stat{padding:12px}.stat strong{font-size:16px}.day{min-height:68px}.calendar-label{min-width:85px}.calendar-controls .btn{padding:6px 8px}.choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style></head>
+<body><div class="layout"><aside class="sidebar"><div class="brand">MarryPlan <small>OUR WEDDING JOURNEY</small></div><nav class="menu" id="menu"></nav><div class="side-bottom">🌷 우리의 특별한 하루까지<br><b>함께 하나씩 준비해요.</b><br><span id="sideCountdown"></span></div></aside><main class="main"><header class="top"><div><div class="eyebrow">WEDDING PLANNER</div><h1 id="pageTitle">우리의 결혼 준비</h1></div><div class="top-actions"><span class="date-pill" id="weddingBadge"></span><button class="btn" onclick="exportPlanner()" title="일정과 지출 데이터 백업">↓ 백업</button><button class="btn" onclick="document.getElementById('plannerImport').click()" title="백업한 데이터 불러오기">↑ 복원</button><button class="btn" onclick="openSettings()">⚙ 설정</button></div></header><section id="dashboard" class="view active"></section><section id="checklist" class="view"></section><section id="calendar" class="view"></section><section id="timeline" class="view"></section><section id="comparison" class="view"></section><section id="budget" class="view"></section></main></div><input id="plannerImport" type="file" accept=".json,application/json" style="display:none" onchange="importPlanner(event)">
+<dialog class="dialog" id="modal"><form method="dialog" id="dialogForm" onsubmit="saveDialog(event)"><div class="dialog-inner"><h2 id="dialogTitle"></h2><div id="dialogFields"></div><div class="dialog-actions"><button class="btn" type="button" onclick="closeDialog()">취소</button><button class="btn primary" type="submit">저장하기</button></div></div></form></dialog>
+
+<script>
+const STORAGE='marryplan_v2';
+const LEGACY_STORAGE='marryplan_v1';
+const today=new Date();
+const iso=(d)=>{let x=new Date(d);return [x.getFullYear(),String(x.getMonth()+1).padStart(2,'0'),String(x.getDate()).padStart(2,'0')].join('-')};
+const datePlus=(days)=>{let d=new Date();d.setDate(d.getDate()+days);return iso(d)};
+const money=n=>(Number(n)||0).toLocaleString('ko-KR')+'원';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,10);
+
+const TASK_COLORS=[
+  {id:'rose',name:'스드메',dot:'#cf7f8a',bg:'#f9eaee',fg:'#9b5562'},
+  {id:'peach',name:'부모님',dot:'#e2a470',bg:'#fff1e3',fg:'#a56629'},
+  {id:'yellow',name:'집',dot:'#d8ba57',bg:'#fff7d7',fg:'#8c730f'},
+  {id:'green',name:'예물예복',dot:'#73b39b',bg:'#eaf7f1',fg:'#3f7a66'},
+  {id:'blue',name:'신행',dot:'#7ea5e8',bg:'#edf3ff',fg:'#4568a2'},
+  {id:'gray',name:'그 외',dot:'#9a9ba4',bg:'#f1f1f4',fg:'#5f626c'}
+];
+const EXPENSE_MARKS=[
+  {id:'blue',name:'람',dot:'#7ea5e8',bg:'#edf3ff',fg:'#4568a2'},
+  {id:'pink',name:'째',dot:'#d38cba',bg:'#fcecf6',fg:'#a45483'}
+];
+const taskColorMap=Object.fromEntries(TASK_COLORS.map(c=>[c.id,c]));
+const expenseMarkMap=Object.fromEntries(EXPENSE_MARKS.map(c=>[c.id,c]));
+const getTaskColor=id=>taskColorMap[id]||TASK_COLORS[0];
+const getExpenseMark=id=>expenseMarkMap[id]||EXPENSE_MARKS[0];
+
+let state,view='dashboard',categoryFilter='all',compareFilter='all',calendarColorFilter='all',month=new Date(today.getFullYear(),today.getMonth(),1),selected=iso(today),dialogKind='',editingId=null;
+
+const seeds=[['💐','상견례',[['일정 및 장소',['양가 일정 조율','상견례 장소 예약','식사 메뉴 확인']],['준비 및 진행',['부모님 선물 준비','대화 주제 및 복장 준비']]]],['🏛️','웨딩홀 · 식장',[['식장 선정',['희망 지역 및 하객 수 결정','웨딩홀 투어 예약','홀 견적 비교','식장 계약금 결제']],['예식 준비',['예식 순서 및 사회자 확정','식대 및 보증인원 확정','최종 하객 수 전달']]]],['📸','웨딩촬영',[['스튜디오',['스튜디오 후보 조사','촬영 스튜디오 계약','촬영 콘셉트 및 소품 준비']],['촬영 준비',['드레스 피팅','헤어·메이크업 예약','촬영일 일정 확인','원본 및 수정본 수령']]]],['👗','드레스 · 메이크업',[['드레스',['드레스샵 투어','본식 드레스 선택','가봉 일정 예약']],['헤어·메이크업',['샵 견적 비교','리허설 및 본식 예약']]]],['💍','예물 · 예복',[['반지 및 예물',['웨딩밴드 매장 방문','웨딩반지 계약','반지 수령']],['예복',['신랑 예복 피팅','구두 및 액세서리 준비']]]],['✉️','청첩장 · 하객',[['초대 준비',['하객 명단 정리','청첩장 디자인 선정','모바일 청첩장 제작']],['하객 관리',['청첩장 전달','참석 여부 확인','좌석 및 식권 준비']]]],['🎊','결혼식 · 본식',[['식전 준비',['본식 스냅·영상 예약','축가·사회·주례 확정','식순 최종 확인']],['당일 진행',['준비물 체크','예식장 최종 점검','본식 진행']]]],['✈️','신혼여행',[['예약',['여행지 및 일정 확정','항공권 예약','숙소 예약']],['출발 준비',['여권 및 비자 확인','여행자 보험 가입','짐 꾸리기']]]],['🏠','신혼집 · 혼수',[['주거',['신혼집 계약','이사 일정 확정']],['혼수',['가전·가구 견적 비교','구매 및 배송 예약']]]]];
+
+function initial(){
+  let categories=seeds.map(([icon,name,subs])=>({
+    id:uid(),icon,name,open:true,
+    subs:subs.map(([name,items])=>({
+      id:uid(),name,
+      tasks:items.map((title,i)=>({id:uid(),title,done:false,date:i===0?datePlus(30):'',cost:0,color:'rose'}))
+    }))
+  }));
+  return {
+    weddingDate:datePlus(240),
+    totalBudget:30000000,
+    categories,
+    quotes:[
+      {id:uid(),category:'웨딩홀 · 식장',vendor:'로즈가든 웨딩홀 (예시)',price:7800000,details:'식대·대관료 포함 견적 예시',chosen:false},
+      {id:uid(),category:'웨딩홀 · 식장',vendor:'가든팰리스 (예시)',price:8900000,details:'보증인원 조건 확인 필요',chosen:false},
+      {id:uid(),category:'웨딩촬영',vendor:'모먼트 스튜디오 (예시)',price:1750000,details:'원본 비용 별도 여부 확인',chosen:false}
+    ],
+    expenses:[]
+  };
+}
+
+function normalizeState(s){
+  if(!s||!s.categories)return initial();
+  s.quotes=s.quotes||[];
+  s.expenses=s.expenses||[];
+  s.categories.forEach(c=>{
+    c.open = c.open!==false;
+    c.subs = c.subs||[];
+    c.subs.forEach(sub=>{
+      sub.tasks=sub.tasks||[];
+      sub.tasks.forEach(t=>{
+        t.done=!!t.done;
+        t.date=t.date||'';
+        t.cost=Number(t.cost)||0;
+        t.color=t.color||'rose';
+      });
+    });
+  });
+  s.expenses.forEach(x=>{
+    x.date=x.date||iso(today);
+    x.amount=Number(x.amount)||0;
+    x.payer=x.payer||'';
+    x.mark=x.mark||'blue';
+  });
+  return s;
+}
+
+function loadState(){
+  try{
+    const current=localStorage.getItem(STORAGE);
+    const legacy=localStorage.getItem(LEGACY_STORAGE);
+    return normalizeState(JSON.parse(current||legacy)||initial());
+  }catch(e){
+    return initial();
+  }
+}
+state=loadState();
+function persist(){try{localStorage.setItem(STORAGE,JSON.stringify(state));}catch(e){console.warn('브라우저 저장소 사용 불가',e);}}
+
+const allTasks=()=>state.categories.flatMap(c=>c.subs.flatMap(s=>s.tasks.map(t=>({...t,category:c.name,catId:c.id,sub:s.name,subId:s.id}))));
+const completed=()=>allTasks().filter(t=>t.done).length;
+const byId=(id)=>{for(const c of state.categories)for(const s of c.subs){const task=s.tasks.find(t=>t.id===id);if(task)return task}return null};
+const spent=()=>state.expenses.reduce((a,e)=>a+Number(e.amount||0),0);
+const daysLeft=()=>Math.ceil((new Date(state.weddingDate+'T00:00:00')-new Date(iso(today)+'T00:00:00'))/86400000);
+const percent=()=>allTasks().length?Math.round(completed()/allTasks().length*100):0;
+const fmtDate=s=>s?`${s.slice(0,4)}.${s.slice(5,7)}.${s.slice(8,10)}`:'날짜 미정';
+
+const menus=[['dashboard','◫','대시보드'],['checklist','☑','준비 체크리스트'],['calendar','▦','일정 달력'],['timeline','◷','준비 타임라인'],['comparison','⚖','업체 가격 비교'],['budget','◉','예산 관리']];
+function go(v){view=v;render()}
+function render(){
+  document.getElementById('menu').innerHTML=menus.map(([id,ic,name])=>`<button class="nav ${id===view?'active':''}" onclick="go('${id}')"><span class="ic">${ic}</span>${name}</button>`).join('');
+  document.getElementById('pageTitle').textContent=menus.find(m=>m[0]===view)[2]==='대시보드'?'우리의 결혼 준비':menus.find(m=>m[0]===view)[2];
+  document.getElementById('weddingBadge').textContent='♥ D'+(daysLeft()>=0?'-'+daysLeft():'+'+Math.abs(daysLeft()))+' · '+fmtDate(state.weddingDate);
+  document.getElementById('sideCountdown').textContent='결혼식 '+fmtDate(state.weddingDate);
+  document.querySelectorAll('.view').forEach(e=>e.classList.toggle('active',e.id===view));
+  ({dashboard:renderDashboard,checklist:renderChecklist,calendar:renderCalendar,timeline:renderTimeline,comparison:renderComparison,budget:renderBudget})[view]();
+}
+
+function colorDot(colorId, cls='task-color-dot'){let c=getTaskColor(colorId);return `<span class="${cls}" style="background:${c.dot}"></span>`}
+function taskMeta(t,{hideSub=false,hideDate=false}={}){return `${esc(t.category)}${hideSub?'':` · ${esc(t.sub)}`}${hideDate||!t.date?'':` · ${fmtDate(t.date)}`}`}
+function taskHtml(t,short=false,hideSub=false){
+  return `<div class="task ${t.done?'done':''}"><input aria-label="${esc(t.title)} 완료" type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${t.id}')"><div class="taskmain"><b class="task-title">${colorDot(t.color)}<span>${esc(t.title)}</span></b><small>${taskMeta(t,{hideSub,hideDate:!t.date})}${t.cost?` · 예상 ${money(t.cost)}`:''}</small></div>${!short?`<button class="iconbutton" title="수정" onclick="openTask('${t.id}')">✎</button>`:''}<span class="chip ${t.done?'green':''}">${t.done?'완료':t.date?'예정':'미정'}</span></div>`;
+}
+function eventHtml(t){let c=getTaskColor(t.color);return `<div class="event ${t.done?'done':''}" style="background:${c.bg};color:${c.fg};border-left-color:${c.dot}" title="${esc(t.category)} · ${esc(t.title)}">${esc(t.title)}</div>`}
+function timelineDotStyle(colorId){let c=getTaskColor(colorId);return `border-color:${c.dot};background:${c.bg}`}
+function markPill(markId){let m=getExpenseMark(markId);return `<span class="mark-pill" style="background:${m.bg};color:${m.fg}"><span class="mark-dot" style="background:${m.dot}"></span>${esc(m.name)}</span>`}
+
+function renderDashboard(){
+  let tasks=allTasks(),next=tasks.filter(t=>!t.done).sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999')).slice(0,6),up=tasks.filter(t=>t.date&&!t.done).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,5),p=percent();
+  document.getElementById('dashboard').innerHTML=`<div class="grid"><div class="card stat highlight"><div class="tag">결혼식까지</div><strong>D${daysLeft()>=0?'-'+daysLeft():'+'+Math.abs(daysLeft())}</strong><div class="sub">${fmtDate(state.weddingDate)}</div></div><div class="card stat"><div class="tag">준비 진행률</div><strong>${p}%</strong><div class="progressbar" style="margin-top:14px"><i style="width:${p}%"></i></div><div class="sub">${completed()} / ${tasks.length}개 완료</div></div><div class="card stat"><div class="tag">총 예산</div><strong>${(state.totalBudget/10000).toLocaleString()}<small style="font-size:14px">만원</small></strong><div class="sub">예상 결혼 준비 비용</div></div><div class="card stat"><div class="tag">지출 현황</div><strong>${(spent()/10000).toLocaleString()}<small style="font-size:14px">만원</small></strong><div class="sub">잔여 예산 ${money(state.totalBudget-spent())}</div></div></div><div class="cols"><div><div class="section-head"><h2>지금 해야 할 일</h2><button class="subtle" onclick="go('checklist')">전체 보기 →</button></div><div class="card">${next.length?next.map(t=>taskHtml(t,true,false)).join(''):'<div class="empty">미완료 작업이 없습니다 🎉</div>'}</div></div><div><div class="section-head"><h2>다가오는 일정</h2><button class="subtle" onclick="go('calendar')">달력 보기 →</button></div><div class="card">${up.length?up.map(t=>`<div class="task"><span class="chip">${fmtDate(t.date)}</span><div class="taskmain"><b class="task-title">${colorDot(t.color)}<span>${esc(t.title)}</span></b><small>${esc(t.category)}</small></div></div>`).join(''):'<div class="empty">등록된 일정이 없습니다</div>'}</div></div></div><div class="section-head"><h2>카테고리별 준비 현황</h2><button class="btn mini primary" onclick="openCategory()">+ 대분류 추가</button></div><div class="grid">${state.categories.map(c=>{let ts=c.subs.flatMap(s=>s.tasks),v=ts.length?Math.round(ts.filter(t=>t.done).length/ts.length*100):0;return `<div class="card" style="cursor:pointer" onclick="categoryFilter='${c.id}';go('checklist')"><div style="font-size:23px;margin-bottom:12px">${esc(c.icon)}</div><b>${esc(c.name)}</b><p class="muted">${ts.filter(t=>t.done).length} / ${ts.length}개 완료</p><div class="progressbar"><i style="width:${v}%"></i></div></div>`}).join('')}</div>`;
+}
+
+function toggleTask(id){let t=byId(id);if(t){t.done=!t.done;persist();render()}}
+function toggleCat(id){let c=state.categories.find(x=>x.id===id);if(c){c.open=!c.open;persist();render()}}
+
+function renderChecklist(){
+  document.getElementById('checklist').innerHTML=`<div class="section-head" style="margin-top:0"><div><h2>대분류 → 중분류 → 세부 할 일</h2><p class="muted">항목을 자유롭게 추가하고 완료 여부와 예정일을 관리하세요.</p></div><button class="btn primary" onclick="openCategory()">+ 대분류 추가</button></div><div class="filters"><button class="filter ${categoryFilter==='all'?'active':''}" onclick="categoryFilter='all';render()">전체 (${allTasks().length})</button>${state.categories.map(c=>`<button class="filter ${categoryFilter===c.id?'active':''}" onclick="categoryFilter='${c.id}';render()">${esc(c.name)}</button>`).join('')}</div>${state.categories.filter(c=>categoryFilter==='all'||categoryFilter===c.id).map(c=>{let ct=c.subs.flatMap(s=>s.tasks),n=ct.filter(t=>t.done).length;return `<div class="category"><div class="category-head" onclick="toggleCat('${c.id}')"><span class="category-icon">${esc(c.icon)}</span><span class="category-name"><strong>${esc(c.name)}</strong><small>${n} / ${ct.length} 완료</small></span><span class="chip">${ct.length?Math.round(n/ct.length*100):0}%</span><button class="iconbutton" onclick="event.stopPropagation();openCategory('${c.id}')" title="대분류 수정">✎</button><span>${c.open?'⌃':'⌄'}</span></div>${c.open?`<div class="category-body">${c.subs.map(s=>`<div class="subgroup"><div class="subgroup-head"><b>${esc(s.name)}</b><span class="muted">${s.tasks.filter(t=>t.done).length}/${s.tasks.length}</span><button class="iconbutton" onclick="openSub('${c.id}','${s.id}')" title="중분류 수정">✎</button><button class="btn mini" onclick="openTask(null,'${c.id}','${s.id}')">+ 세부항목</button></div>${s.tasks.map(t=>`<div class="nested-item ${t.done?'checked':''}"><input type="checkbox" aria-label="${esc(t.title)}" ${t.done?'checked':''} onchange="toggleTask('${t.id}')"><div class="taskmain"><b class="task-title">${colorDot(t.color)}<span>${esc(t.title)}</span></b><small>${t.date?fmtDate(t.date):'일정 미정'} ${t.cost?`· 예상 ${money(t.cost)}`:''}</small></div><button class="iconbutton" onclick="openTask('${t.id}')" title="수정">✎</button><button class="iconbutton" onclick="removeItem('task','${t.id}')" title="삭제">×</button></div>`).join('')}</div>`).join('')}<button class="btn mini" onclick="openSub('${c.id}')">+ 중분류 추가</button><button class="iconbutton" style="float:right" onclick="removeItem('category','${c.id}')">대분류 삭제</button></div>`:''}</div>`}).join('')}`;
+}
+
+function renderCalendar(){
+  let y=month.getFullYear(),m=month.getMonth(),first=(new Date(y,m,1).getDay()),grid=[];
+  for(let i=0;i<42;i++){
+    let d=new Date(y,m,1-first+i),dStr=iso(d),ev=allTasks().filter(t=>t.date===dStr&&(calendarColorFilter==='all'||getTaskColor(t.color).id===calendarColorFilter));
+    grid.push(`<div class="day ${d.getMonth()!==m?'out':''} ${dStr===iso(today)?'today':''} ${selected===dStr?'selected':''}" onclick="selected='${dStr}';render()"><span class="num">${d.getDate()}</span>${ev.slice(0,2).map(t=>eventHtml(t)).join('')}${ev.length>2?`<div class="muted">+${ev.length-2}개</div>`:''}${dStr===state.weddingDate?'<div class="event" style="background:#f9eaee;color:#9b5562;border-left-color:#cf7f8a">💍 결혼식</div>':''}</div>`)
+  }
+  const ev=allTasks().filter(t=>t.date===selected&&(calendarColorFilter==='all'||getTaskColor(t.color).id===calendarColorFilter));
+  document.getElementById('calendar').innerHTML=`<div class="section-head" style="margin-top:0"><div class="calendar-controls"><button class="btn mini" onclick="month.setMonth(month.getMonth()-1);render()">〈</button><span class="calendar-label">${y}년 ${m+1}월</span><button class="btn mini" onclick="month.setMonth(month.getMonth()+1);render()">〉</button><button class="btn mini" onclick="month=new Date(today.getFullYear(),today.getMonth(),1);selected=iso(today);render()">오늘</button></div><button class="btn primary" onclick="openTask(null,null,null,'${selected}')">+ 일정 추가</button></div><div class="calendar-filter"><span class="muted">색상별 일정 보기</span><div class="filters" style="margin:0"><button class="filter ${calendarColorFilter==='all'?'active':''}" onclick="calendarColorFilter='all';render()">전체</button>${TASK_COLORS.map(c=>`<button class="filter ${calendarColorFilter===c.id?'active':''}" onclick="calendarColorFilter='${c.id}';render()" style="display:inline-flex;align-items:center;gap:7px"><span class="choice-dot" style="background:${c.dot}"></span>${c.name}</button>`).join('')}</div></div><div class="calendar">${['일','월','화','수','목','금','토'].map(x=>`<div class="weekday">${x}</div>`).join('')}${grid.join('')}</div><div class="section-head"><h2>${fmtDate(selected)} 일정</h2><span class="muted">${ev.length}개</span></div><div class="card">${selected===state.weddingDate?'<div class="task"><b>💍 결혼식 당일</b></div>':''}${ev.length?ev.map(t=>taskHtml(t,false,true)).join(''):'<div class="empty">해당 날짜에 등록된 할 일이 없습니다.</div>'}</div>`;
+}
+
+function renderTimeline(){
+  let tasks=allTasks().filter(t=>t.date).sort((a,b)=>a.date.localeCompare(b.date));
+  document.getElementById('timeline').innerHTML=`<div class="section-head" style="margin-top:0"><div><h2>날짜순 준비 타임라인</h2><p class="muted">체크리스트에서 설정한 날짜가 자동으로 연결됩니다.</p></div><button class="btn primary" onclick="openTask()">+ 일정 추가</button></div><div style="max-width:850px;margin:28px auto">${tasks.map(t=>`<div class="timeline-item ${t.done?'done':''}"><div class="dot" style="${timelineDotStyle(t.color)}"></div><div class="timeline-content"><small>${fmtDate(t.date)} · ${esc(t.category)}</small><h3>${colorDot(t.color)}<span>${esc(t.title)}</span></h3><div class="section-tools"><span class="chip ${t.done?'green':''}">${t.done?'완료':'진행 예정'}</span><button class="subtle" onclick="openTask('${t.id}')">일정 수정</button><button class="subtle" onclick="toggleTask('${t.id}')">${t.done?'미완료로 변경':'완료 처리'}</button></div></div></div>`).join('')||'<div class="empty">날짜가 지정된 항목이 없습니다.</div>'}</div>`;
+}
+
+function renderComparison(){
+  let q=state.quotes.filter(x=>compareFilter==='all'||x.category===compareFilter),categories=[...new Set([...state.categories.map(c=>c.name),...state.quotes.map(q=>q.category)])];
+  let grouped={}; for(let x of q)(grouped[x.category]??=[]).push(x);
+  document.getElementById('comparison').innerHTML=`<div class="section-head" style="margin-top:0"><div><h2>업체별 견적 한눈에 비교</h2><p class="muted">견적을 직접 입력하여 가격과 포함 항목을 비교하세요. 초기 데이터는 예시입니다.</p></div><button class="btn primary" onclick="openQuote()">+ 업체 견적 등록</button></div><div class="filters"><button class="filter ${compareFilter==='all'?'active':''}" onclick="compareFilter='all';render()">전체</button>${categories.map(c=>`<button class="filter ${compareFilter===c?'active':''}" onclick="compareFilter='${esc(c).replace(/'/g,'&#39;')}';render()">${esc(c)}</button>`).join('')}</div>${Object.entries(grouped).map(([cat,quotes])=>{let min=Math.min(...quotes.map(x=>Number(x.price)));return `<div class="section-head"><h2>${esc(cat)}</h2><span class="muted">${quotes.length}개 업체</span></div><div class="table-wrap"><table><thead><tr><th>업체명</th><th>견적 금액</th><th>세부 조건 및 메모</th><th>선택</th><th>관리</th></tr></thead><tbody>${quotes.sort((a,b)=>a.price-b.price).map(x=>`<tr><td><b>${esc(x.vendor)}</b> ${Number(x.price)===min&&quotes.length>1?'<span class="badge-best">최저가</span>':''}</td><td class="money">${money(x.price)}</td><td class="muted">${esc(x.details)}</td><td><input type="checkbox" aria-label="선택" ${x.chosen?'checked':''} onchange="chooseQuote('${x.id}')"></td><td><button class="subtle" onclick="openQuote('${x.id}')">수정</button><button class="iconbutton" onclick="removeItem('quote','${x.id}')">×</button></td></tr>`).join('')}</tbody></table></div>`}).join('')||'<div class="card empty">등록된 업체가 없습니다.</div>'}`;
+}
+function chooseQuote(id){let q=state.quotes.find(q=>q.id===id);if(q){q.chosen=!q.chosen;persist();render()}}
+
+function renderBudget(){
+  let sum=spent(),pct=state.totalBudget?Math.round(sum/state.totalBudget*100):0;
+  let expenses=[...state.expenses].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  let payerTotals=new Map();
+  for(const x of state.expenses){const key=String(x.payer||'').trim()||'미지정';payerTotals.set(key,(payerTotals.get(key)||0)+Number(x.amount||0));}
+  const payerCards=[...payerTotals.entries()].sort((a,b)=>b[1]-a[1]).map(([payer,total])=>`<div class="card stat"><div class="tag">${esc(payer)} 지출 합계</div><strong>${money(total)}</strong><div class="sub">전체 지출의 ${sum?(total/sum*100).toFixed(1):'0.0'}%</div></div>`).join('');
+  document.getElementById('budget').innerHTML=`<div class="grid"><div class="card stat"><div class="tag">총예산</div><strong>${money(state.totalBudget)}</strong></div><div class="card stat"><div class="tag">현재 지출</div><strong>${money(sum)}</strong></div><div class="card stat"><div class="tag">남은 예산</div><strong>${money(state.totalBudget-sum)}</strong></div><div class="card stat"><div class="tag">예산 사용률</div><strong>${pct}%</strong></div></div><div class="section-head"><h2>전체 예산 현황</h2><button class="btn" onclick="openSettings()">총예산 수정</button></div><div class="card"><div class="budget-bar"><i style="width:${Math.min(100,pct)}%;background:${pct>100?'#d85c5c':'#b56d77'}"></i></div><p class="muted">${pct>100?'설정된 예산을 초과했습니다.':'총예산 대비 실제 지출 비율입니다.'}</p></div><div class="section-head"><h2>정산자별 지출 합계</h2><span class="muted">정산자 입력값 기준 자동 합산</span></div><div class="grid payer-totals">${payerCards||'<div class="card empty">지출 내역을 등록하면 정산자별 합계가 표시됩니다.</div>'}</div><div class="section-head"><h2>지출 내역</h2><button class="btn primary" onclick="openExpense()">+ 지출 등록</button></div><div class="table-wrap"><table class="expense-table"><thead><tr><th>지출일</th><th>카테고리</th><th>정산자</th><th>분류</th><th>내역</th><th>금액</th><th>관리</th></tr></thead><tbody>${expenses.map(x=>`<tr><td>${fmtDate(x.date)}</td><td>${esc(x.category)}</td><td>${esc(x.payer||'-')}</td><td>${markPill(x.mark)}</td><td><b class="expense-title">${esc(x.title)}</b></td><td class="money">${money(x.amount)}</td><td><button class="subtle" onclick="openExpense('${x.id}')">수정</button><button class="iconbutton" onclick="removeItem('expense','${x.id}')">×</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">지출 내역을 등록해 주세요.</td></tr>'}</tbody></table></div>`;
+}
+
+function optionCats(selected=''){return state.categories.map(c=>`<option value="${esc(c.id)}" ${selected===c.id?'selected':''}>${esc(c.name)}</option>`).join('')}
+function optionSubs(catId,sel=''){let c=state.categories.find(c=>c.id===catId);return (c?.subs||[]).map(s=>`<option value="${esc(s.id)}" ${sel===s.id?'selected':''}>${esc(s.name)}</option>`).join('')}
+function field(label,name,value='',type='text',attr=''){return `<div class="field"><label for="f_${name}">${label}</label><input class="input" id="f_${name}" name="${name}" type="${type}" value="${esc(value)}" ${attr}></div>`}
+function selectField(label,name,options){return `<div class="field"><label for="f_${name}">${label}</label><select name="${name}" id="f_${name}" class="input">${options}</select></div>`}
+function textareaField(label,name,value='',rows=3){return `<div class="field"><label for="f_${name}">${label}</label><textarea id="f_${name}" name="${name}" rows="${rows}">${esc(value)}</textarea></div>`}
+function choiceField(label,name,options,selected){return `<div class="field"><label>${label}</label><div class="choice-grid">${options.map(o=>`<input class="choice-input" type="radio" name="${name}" id="f_${name}_${o.id}" value="${o.id}" ${selected===o.id?'checked':''}><label class="choice-label" for="f_${name}_${o.id}" style="--choice-bg:${o.bg};--choice-fg:${o.fg};--choice-dot:${o.dot}"><span class="choice-dot"></span><span>${esc(o.name)}</span></label>`).join('')}</div></div>`}
+function openDialog(kind,title,html,id=null){dialogKind=kind;editingId=id;document.getElementById('dialogTitle').textContent=title;document.getElementById('dialogFields').innerHTML=html;document.getElementById('modal').showModal()}
+function closeDialog(){document.getElementById('modal').close()}
+
+function openSettings(){openDialog('settings','결혼식 기본 설정',field('결혼식 날짜','weddingDate',state.weddingDate,'date','required')+field('총예산 (원)','totalBudget',state.totalBudget,'number','min="0" required'))}
+function openCategory(id){let c=state.categories.find(c=>c.id===id);openDialog('category',c?'대분류 수정':'대분류 추가',field('아이콘 (이모지)','icon',c?.icon||'💗')+field('대분류 이름','name',c?.name||'','text','required'),id)}
+function openSub(catId,subId){let s=state.categories.find(c=>c.id===catId)?.subs.find(s=>s.id===subId);openDialog('sub',s?'중분류 수정':'중분류 추가',selectField('대분류','catId',optionCats(catId))+field('중분류 이름','name',s?.name||'','text','required'),subId)}
+function openTask(id,catId,subId,date){
+  let t=id?allTasks().find(t=>t.id===id):null,cat=t?.catId||catId||state.categories[0]?.id,sub=t?.subId||subId||state.categories.find(c=>c.id===cat)?.subs[0]?.id;
+  let html=field('할 일','title',t?.title||'','text','required')+selectField('대분류','catId',optionCats(cat))+selectField('중분류','subId',optionSubs(cat,sub))+field('예정일','date',t?.date||date||'','date')+field('예상 비용 (원)','cost',t?.cost||0,'number','min="0"')+choiceField('색상 포인트','color',TASK_COLORS,t?.color||'rose');
+  openDialog('task',t?'할 일 수정':'할 일 추가',html,id);
+  document.getElementById('f_catId').onchange=e=>{document.getElementById('f_subId').innerHTML=optionSubs(e.target.value)};
+}
+function openQuote(id){let q=state.quotes.find(x=>x.id===id);let opts=state.categories.map(c=>`<option ${q?.category===c.name?'selected':''}>${esc(c.name)}</option>`).join('');openDialog('quote',q?'견적 수정':'업체 견적 추가',selectField('준비 항목','category',opts)+field('업체명','vendor',q?.vendor||'','text','required')+field('견적 금액 (원)','price',q?.price||0,'number','min="0" required')+textareaField('포함 사항 / 비교 메모','details',q?.details||'',3),id)}
+function openExpense(id){
+  let x=state.expenses.find(x=>x.id===id),opts=state.categories.map(c=>`<option ${x?.category===c.name?'selected':''}>${esc(c.name)}</option>`).join('');
+  let html=field('지출일','date',x?.date||iso(today),'date','required')+selectField('카테고리','category',opts)+field('내역','title',x?.title||'','text','required')+field('지출 금액 (원)','amount',x?.amount||0,'number','min="0" required')+field('정산자','payer',x?.payer||'','text','list="payer_suggestions" placeholder="예: 람, 째"')+'<datalist id="payer_suggestions"><option value="람"><option value="째"></datalist>'+choiceField('분류', 'mark', EXPENSE_MARKS, x?.mark||'blue');
+  openDialog('expense',x?'지출 내역 수정':'지출 내역 추가',html,id)
+}
+
+function saveDialog(e){
+  e.preventDefault();
+  let fd=Object.fromEntries(new FormData(document.getElementById('dialogForm')).entries()),id=editingId;
+  switch(dialogKind){
+    case 'settings':
+      state.weddingDate=fd.weddingDate; state.totalBudget=+fd.totalBudget; break;
+    case 'category':
+      if(id) Object.assign(state.categories.find(x=>x.id===id),{name:fd.name,icon:fd.icon});
+      else state.categories.push({id:uid(),name:fd.name,icon:fd.icon||'💗',open:true,subs:[]});
+      break;
+    case 'sub':
+      if(id){
+        let found=state.categories.flatMap(c=>c.subs).find(x=>x.id===id);
+        let old=state.categories.find(c=>c.subs.some(s=>s.id===id));
+        if(old.id!==fd.catId){old.subs=old.subs.filter(s=>s.id!==id);state.categories.find(c=>c.id===fd.catId).subs.push(found)}
+        found.name=fd.name;
+      }else state.categories.find(c=>c.id===fd.catId).subs.push({id:uid(),name:fd.name,tasks:[]});
+      break;
+    case 'task':{
+      let target=state.categories.find(c=>c.id===fd.catId)?.subs.find(s=>s.id===fd.subId);
+      if(!target){alert('먼저 중분류를 추가해 주세요.');return}
+      let task=id?byId(id):null;
+      if(task){for(let c of state.categories)for(let s of c.subs)s.tasks=s.tasks.filter(t=>t.id!==id)}
+      else task={id:uid(),done:false};
+      Object.assign(task,{title:fd.title,date:fd.date,cost:+fd.cost,color:fd.color||'rose'});
+      target.tasks.push(task); break;
+    }
+    case 'quote':{
+      let q=id?state.quotes.find(x=>x.id===id):{id:uid(),chosen:false};
+      Object.assign(q,{category:fd.category,vendor:fd.vendor,price:+fd.price,details:fd.details});
+      if(!id)state.quotes.push(q); break;
+    }
+    case 'expense':{
+      let x=id?state.expenses.find(x=>x.id===id):{id:uid()};
+      Object.assign(x,{date:fd.date,category:fd.category,title:fd.title,amount:+fd.amount,payer:fd.payer||'',mark:fd.mark||'blue'});
+      if(!id)state.expenses.push(x); break;
+    }
+  }
+  persist(); closeDialog(); render();
+}
+
+function removeItem(type,id){
+  if(!confirm('이 항목을 삭제할까요? 하위 항목도 함께 삭제될 수 있습니다.'))return;
+  if(type==='category'){state.categories=state.categories.filter(c=>c.id!==id);categoryFilter='all'}
+  if(type==='task'){for(let c of state.categories)for(let s of c.subs)s.tasks=s.tasks.filter(t=>t.id!==id)}
+  if(type==='quote')state.quotes=state.quotes.filter(q=>q.id!==id)
+  if(type==='expense')state.expenses=state.expenses.filter(q=>q.id!==id)
+  persist(); render();
+}
+
+
+function exportPlanner(){
+  const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json;charset=utf-8'});
+  const url=URL.createObjectURL(blob); const a=document.createElement('a');
+  a.href=url;a.download='웨딩플래너_백업_'+iso(new Date())+'.json';document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
+}
+async function importPlanner(e){
+  const f=e.target.files&&e.target.files[0]; if(!f)return;
+  try{
+    const data=JSON.parse(await f.text());
+    if(!data||!Array.isArray(data.categories)||!Array.isArray(data.expenses)){throw new Error('백업 파일 형식이 맞지 않습니다.');}
+    if(!confirm('현재 브라우저에 저장된 데이터를 백업 파일 내용으로 교체할까요?'))return;
+    state=normalizeState(data);persist();render();alert('불러오기가 완료되었습니다.');
+  }catch(err){alert('불러오기 실패: '+err.message)}finally{e.target.value='';}
+}
+
+render();
+</script>
+</body></html>
