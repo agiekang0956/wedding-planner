@@ -119,7 +119,7 @@ const daysLeft=()=>Math.ceil((new Date(state.weddingDate+'T00:00:00')-new Date(i
 const percent=()=>allTasks().length?Math.round(completed()/allTasks().length*100):0;
 const fmtDate=s=>s?`${s.slice(0,4)}.${s.slice(5,7)}.${s.slice(8,10)}`:'날짜 미정';
 
-const menus=[['dashboard','◫','대시보드'],['checklist','☑','준비 체크리스트'],['calendar','▦','일정 달력'],['timeline','◷','준비 타임라인'],['comparison','⚖','업체 가격 비교'],['budget','◉','예산 관리']];
+const menus=[['dashboard','◫','대시보드'],['checklist','☑','준비 체크리스트'],['calendar','▦','일정 달력'],['timeline','◷','준비 타임라인'],['budget','◉','예산 관리'],['comparison','⚖','업체 가격 비교']];
 function go(v){view=v;render()}
 function render(){
   document.getElementById('menu').innerHTML=menus.map(([id,ic,name])=>`<button class="nav ${id===view?'active':''}" onclick="go('${id}')"><span class="ic">${ic}</span>${name}</button>`).join('');
@@ -138,6 +138,8 @@ function taskHtml(t,short=false,hideSub=false){
 function eventHtml(t){let c=getTaskColor(t.color);return `<div class="event ${t.done?'done':''}" style="background:${c.bg};color:${c.fg};border-left-color:${c.dot}" title="${esc(t.category)} · ${esc(t.title)}">${esc(t.title)}</div>`}
 function timelineDotStyle(colorId){let c=getTaskColor(colorId);return `border-color:${c.dot};background:${c.bg}`}
 function markPill(markId){let m=getExpenseMark(markId);return `<span class="mark-pill" style="background:${m.bg};color:${m.fg}"><span class="mark-dot" style="background:${m.dot}"></span>${esc(m.name)}</span>`}
+function payerPill(payer){const name=String(payer||'').trim();const palette={'람':['#edf3ff','#4568a2','#7ea5e8'],'째':['#fcecf6','#a45483','#d38cba'],'공동':['#eaf7f1','#3f7a66','#73b39b']};const c=palette[name];return c?`<span class="mark-pill" style="background:${c[0]};color:${c[1]}"><span class="mark-dot" style="background:${c[2]}"></span>${esc(name)}</span>`:esc(name||'미지정')}
+
 
 function renderDashboard(){
   let tasks=allTasks(),next=tasks.filter(t=>!t.done).sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999')).slice(0,6),up=tasks.filter(t=>t.date&&!t.done).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,5),p=percent();
@@ -179,7 +181,11 @@ function renderBudget(){
   let payerTotals=new Map();
   for(const x of state.expenses){const key=String(x.payer||'').trim()||'미지정';payerTotals.set(key,(payerTotals.get(key)||0)+Number(x.amount||0));}
   const payerCards=[...payerTotals.entries()].sort((a,b)=>b[1]-a[1]).map(([payer,total])=>`<div class="card stat"><div class="tag">${esc(payer)} 지출 합계</div><strong>${money(total)}</strong><div class="sub">전체 지출의 ${sum?(total/sum*100).toFixed(1):'0.0'}%</div></div>`).join('');
-  document.getElementById('budget').innerHTML=`<div class="grid"><div class="card stat"><div class="tag">총예산</div><strong>${money(state.totalBudget)}</strong></div><div class="card stat"><div class="tag">현재 지출</div><strong>${money(sum)}</strong></div><div class="card stat"><div class="tag">남은 예산</div><strong>${money(state.totalBudget-sum)}</strong></div><div class="card stat"><div class="tag">예산 사용률</div><strong>${pct}%</strong></div></div><div class="section-head"><h2>전체 예산 현황</h2><button class="btn" onclick="openSettings()">총예산 수정</button></div><div class="card"><div class="budget-bar"><i style="width:${Math.min(100,pct)}%;background:${pct>100?'#d85c5c':'#b56d77'}"></i></div><p class="muted">${pct>100?'설정된 예산을 초과했습니다.':'총예산 대비 실제 지출 비율입니다.'}</p></div><div class="section-head"><h2>정산자별 지출 합계</h2><span class="muted">정산자 입력값 기준 자동 합산</span></div><div class="grid payer-totals">${payerCards||'<div class="card empty">지출 내역을 등록하면 정산자별 합계가 표시됩니다.</div>'}</div><div class="section-head"><h2>지출 내역</h2><button class="btn primary" onclick="openExpense()">+ 지출 등록</button></div><div class="table-wrap"><table class="expense-table"><thead><tr><th>지출일</th><th>카테고리</th><th>정산자</th><th>분류</th><th>내역</th><th>금액</th><th>관리</th></tr></thead><tbody>${expenses.map(x=>`<tr><td>${fmtDate(x.date)}</td><td>${esc(x.category)}</td><td>${esc(x.payer||'-')}</td><td>${markPill(x.mark)}</td><td><b class="expense-title">${esc(x.title)}</b></td><td class="money">${money(x.amount)}</td><td><button class="subtle" onclick="openExpense('${x.id}')">수정</button><button class="iconbutton" onclick="removeItem('expense','${x.id}')">×</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">지출 내역을 등록해 주세요.</td></tr>'}</tbody></table></div>`;
+  const categoryTotals=new Map(state.categories.map(c=>[c.name,0]));
+  for(const x of state.expenses){const name=String(x.category||'').trim()||'미분류';categoryTotals.set(name,(categoryTotals.get(name)||0)+Number(x.amount||0));}
+  const categoryRows=[...categoryTotals.entries()].map(([category,total])=>`<tr><td>${esc(category)}</td><td class="money">${money(total)}</td><td>${sum?(total/sum*100).toFixed(1):'0.0'}%</td></tr>`).join('');
+
+  document.getElementById('budget').innerHTML=`<div class="grid"><div class="card stat"><div class="tag">총예산</div><strong>${money(state.totalBudget)}</strong></div><div class="card stat"><div class="tag">현재 지출</div><strong>${money(sum)}</strong></div><div class="card stat"><div class="tag">남은 예산</div><strong>${money(state.totalBudget-sum)}</strong></div><div class="card stat"><div class="tag">예산 사용률</div><strong>${pct}%</strong></div></div><div class="section-head"><h2>전체 예산 현황</h2><button class="btn" onclick="openSettings()">총예산 수정</button></div><div class="card"><div class="budget-bar"><i style="width:${Math.min(100,pct)}%;background:${pct>100?'#d85c5c':'#b56d77'}"></i></div><p class="muted">${pct>100?'설정된 예산을 초과했습니다.':'총예산 대비 실제 지출 비율입니다.'}</p></div><div class="section-head"><h2>정산자별 지출 합계</h2><span class="muted">정산자 입력값 기준 자동 합산</span></div><div class="grid payer-totals">${payerCards||'<div class="card empty">지출 내역을 등록하면 정산자별 합계가 표시됩니다.</div>'}</div><div class="section-head"><h2>대분류별 지출 합계</h2><span class="muted">체크리스트 대분류 기준</span></div><div class="table-wrap"><table style="min-width:320px"><thead><tr><th>대분류</th><th>지출 합계</th><th>비율</th></tr></thead><tbody>${categoryRows}</tbody></table></div><div class="section-head"><h2>지출 내역</h2><button class="btn primary" onclick="openExpense()">+ 지출 등록</button></div><div class="table-wrap"><table class="expense-table"><thead><tr><th>지출일</th><th>분류 (대분류)</th><th>정산자</th><th>내역</th><th>금액</th><th>관리</th></tr></thead><tbody>${expenses.map(x=>`<tr><td>${fmtDate(x.date)}</td><td>${esc(x.category)}</td><td>${payerPill(x.payer)}</td><td><b class="expense-title">${esc(x.title)}</b></td><td class="money">${money(x.amount)}</td><td><button class="subtle" onclick="openExpense('${x.id}')">수정</button><button class="iconbutton" onclick="removeItem('expense','${x.id}')">×</button></td></tr>`).join('')||'<tr><td colspan="6" class="empty">지출 내역을 등록해 주세요.</td></tr>'}</tbody></table></div>`;
 }
 
 function optionCats(selected=''){return state.categories.map(c=>`<option value="${esc(c.id)}" ${selected===c.id?'selected':''}>${esc(c.name)}</option>`).join('')}
@@ -202,8 +208,15 @@ function openTask(id,catId,subId,date){
 }
 function openQuote(id){let q=state.quotes.find(x=>x.id===id);let opts=state.categories.map(c=>`<option ${q?.category===c.name?'selected':''}>${esc(c.name)}</option>`).join('');openDialog('quote',q?'견적 수정':'업체 견적 추가',selectField('준비 항목','category',opts)+field('업체명','vendor',q?.vendor||'','text','required')+field('견적 금액 (원)','price',q?.price||0,'number','min="0" required')+textareaField('포함 사항 / 비교 메모','details',q?.details||'',3),id)}
 function openExpense(id){
-  let x=state.expenses.find(x=>x.id===id),opts=state.categories.map(c=>`<option ${x?.category===c.name?'selected':''}>${esc(c.name)}</option>`).join('');
-  let html=field('지출일','date',x?.date||iso(today),'date','required')+selectField('카테고리','category',opts)+field('내역','title',x?.title||'','text','required')+field('지출 금액 (원)','amount',x?.amount||0,'number','min="0" required')+field('정산자','payer',x?.payer||'','text','list="payer_suggestions" placeholder="예: 람, 째"')+'<datalist id="payer_suggestions"><option value="람"><option value="째"></datalist>'+choiceField('분류', 'mark', EXPENSE_MARKS, x?.mark||'blue');
+  let x=state.expenses.find(x=>x.id===id);
+  // 지출 분류는 체크리스트 대분류(state.categories)에서만 선택한다.
+  let opts=state.categories.map(c=>`<option value="${esc(c.name)}" ${x?.category===c.name?'selected':''}>${esc(c.name)}</option>`).join('');
+  // 과거 백업에 있는 삭제된 대분류 항목도 수정 중에는 유지할 수 있게 한다.
+  if(x?.category&&!state.categories.some(c=>c.name===x.category))opts+=`<option value="${esc(x.category)}" selected>${esc(x.category)} (이전 분류)</option>`;
+  let payers=['람','째','공동'];
+  if(x?.payer&&!payers.includes(x.payer))payers.push(x.payer);
+  let payerOpts='<option value="">정산자 선택</option>'+payers.map(name=>`<option value="${esc(name)}" ${x?.payer===name?'selected':''}>${esc(name)}</option>`).join('');
+  let html=field('지출일','date',x?.date||iso(today),'date','required')+selectField('분류 (대분류)','category',opts)+field('내역','title',x?.title||'','text','required')+field('지출 금액 (원)','amount',x?.amount||0,'number','min="0" required')+selectField('정산자','payer',payerOpts);
   openDialog('expense',x?'지출 내역 수정':'지출 내역 추가',html,id)
 }
 
@@ -241,7 +254,7 @@ function saveDialog(e){
     }
     case 'expense':{
       let x=id?state.expenses.find(x=>x.id===id):{id:uid()};
-      Object.assign(x,{date:fd.date,category:fd.category,title:fd.title,amount:+fd.amount,payer:fd.payer||'',mark:fd.mark||'blue'});
+      Object.assign(x,{date:fd.date,category:fd.category,title:fd.title,amount:+fd.amount,payer:fd.payer||'',mark:x.mark||'blue'});
       if(!id)state.expenses.push(x); break;
     }
   }
